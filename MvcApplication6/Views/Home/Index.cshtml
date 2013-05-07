@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Check the console.log output</h2>
+
+@section scripts
+{
+    <script>
+        $.ajax({
+            type: "POST",
+            url: '/home/ajaxy/',
+            data: {
+                "foo": "bar"
+            }
+        }).done(function(data) {
+            console.log("There's no dataType set so the response is...", data || 'null');
+        });
+        
+        $.ajax({
+            type: "POST",
+            url: '/home/ajaxy/',
+            dataType: 'html',
+            data: {
+                "foo": "bar"
+            }
+        }).done(function (data) {
+            console.log("There's a dataType set to 'html' so the response is...", data || 'null');
+        });
+    </script>
+}
